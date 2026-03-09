@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+  app:
+    # Build the image from our Dockerfile in the current directory
+    build: .
+
+    # Name the running container
+    container_name: devops-pipeline
+
+    # Map port 3000 on your machine → port 3000 inside the container
+    # Format: "host:container"
+    ports:
+      - "3000:3000"
+
+    # Set environment variables inside the container
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+
+    # Automatically restart the container if it crashes
+    restart: unless-stopped
